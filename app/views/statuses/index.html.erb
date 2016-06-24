@@ -7,7 +7,9 @@
 <% @statuses.each do |status| %>
   <!-- For each status that exists, the following code will run: -->
   <div class="status">
-    <strong><%= status.name %></strong>
+    <% if user_signed_in? %>
+    <strong><%= current_user.full_name %></strong>
+    <% end %>
     <p><%= status.content %></p>
     <div class="meta">
       <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
