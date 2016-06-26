@@ -7,16 +7,23 @@
 <% @statuses.each do |status| %>
   <!-- For each status that exists, the following code will run: -->
   <div class="status">
-    <% if user_signed_in? %>
-    <strong><%= current_user.full_name %></strong>
-    <% end %>
-    <p><%= status.content %></p>
-    <div class="meta">
-      <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
-      <span class="admin">
-        | <%= link_to "Edit", edit_status_path(status) %> |
-        <%= link_to "Delete", method: :delete, data: {confirm: "Are you sure you want to delete this status?"} %>
-      </span>
+    <div class="row">
+      <div class="span1">
+        Image
+      </div>
+      <div class="span7">
+        <% if user_signed_in? %>
+        <strong><%= current_user.full_name %></strong>
+        <% end %>
+        <p><%= status.content %></p>
+        <div class="meta">
+          <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
+          <span class="admin">
+            | <%= link_to "Edit", edit_status_path(status) %> |
+            <%= link_to "Delete", method: :delete, data: {confirm: "Are you sure you want to delete this status?"} %>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
